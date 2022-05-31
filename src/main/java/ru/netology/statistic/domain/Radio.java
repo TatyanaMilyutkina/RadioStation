@@ -2,9 +2,8 @@ package ru.netology.statistic.domain;
 
 public class Radio {
 
-    //Запоминаем номер станции
-
     private int radioStation;
+    private int volumeRadio;
 
     public void setRadioStation(int numStation) {
 
@@ -22,46 +21,6 @@ public class Radio {
         return radioStation;
     }
 
-    //Следующая станция
-
-    private int nextStation;
-
-    public void setNextStation() {
-
-        nextStation = radioStation;
-        if (nextStation < 9 && nextStation >= 0) {
-            nextStation = nextStation + 1;
-        }
-        if (nextStation == 9) {
-            nextStation = 0;
-        }
-    }
-
-    public int getNextStation() {
-        return nextStation;
-    }
-
-    //Предыдущая станция
-
-    private int prevStation;
-
-    public void setPrevStation() {
-        prevStation = radioStation - 1;
-
-        if (prevStation <= 9 && prevStation > 0) {
-            return;
-        }
-        if (prevStation == -1) {
-            prevStation = 9;
-        }
-    }
-
-    public int getPrevStation() {
-        return prevStation;
-    }
-
-    private int volumeRadio;
-
     public void setVolumeStation(int numVolume) {
         if (numVolume > 10) {
             return;
@@ -76,37 +35,70 @@ public class Radio {
         return volumeRadio;
     }
 
-    private int nextVolume;
+    //Следующая станция
 
-    public void setNextVolume() {
+    public int nextStation() {
 
-        nextVolume = volumeRadio;
-        if (nextVolume < 10 && nextVolume >= 0) {
+        int nextStation = radioStation + 1;
+        if (nextStation < 9) {
+            nextStation = nextStation;
+        }
+        if (nextStation == 10) {
+            nextStation = 0;
+        }
+        return nextStation;
+    }
+
+    public int nextVolume() {
+
+        int nextVolume = volumeRadio;
+        if (nextVolume < 10) {
             nextVolume = nextVolume + 1;
         }
         if (nextVolume == 10) {
-            nextVolume = 0;
+            nextVolume = 10;
         }
-    }
-
-    public int getNextVolume() {
         return nextVolume;
     }
 
-    private int prevVolume;
+    public int prevStation(int station) {
 
-    public void setPrevVolume() {
-        prevVolume = volumeRadio -1;
+        int prevStation = station;
 
-        if (prevVolume <= 10 && prevVolume > 0) {
-            return;
+
+        if (prevStation <= 9 && prevStation >= -1) {
+            prevStation = prevStation - 1;
         }
-        if (prevVolume == -1) {
+        if (prevStation == -1) {
+            prevStation = 9;
+        }
+
+        if (prevStation > 9 || prevStation <= 0) {
+            prevStation = 0;
+        }
+
+        return prevStation;
+    }
+
+    public int prevVolume(int volume) {
+        int prevVolume = volume;
+
+        if (prevVolume > 10 || prevVolume < 0) {
+            prevVolume = 0;
+        }
+
+        if (prevVolume < 10 && prevVolume > 0) {
+            prevVolume = prevVolume - 1;
+        }
+
+        if (prevVolume == 10) {
             prevVolume = 10;
         }
+        if (prevVolume == 0) {
+            prevVolume = 0;
+        }
+        return prevVolume;
+
     }
 
-    public int getPrevVolume() {
-        return prevVolume;
-    }
 }

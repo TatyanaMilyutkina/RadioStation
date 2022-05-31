@@ -1,11 +1,31 @@
 package ru.netology.statistic.domain;
 
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvFileSource;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 
 public class RadioTest {
+
+    @ParameterizedTest
+    @CsvFileSource(resources = {"/prevVolume.csv"})
+    public void prevParamRadioVolume(int volume, int expected) {
+        Radio prev = new Radio();
+        prev.prevVolume(volume);
+        int actual = prev.prevVolume(volume);
+        assertEquals(expected, actual);
+    }
+
+    @ParameterizedTest
+    @CsvFileSource(resources = {"/prevStation.csv"})
+    public void prevParamRadioStation(int station, int expected) {
+        Radio prev = new Radio();
+        prev.prevStation(station);
+        int actual = prev.prevStation(station);
+        assertEquals(expected, actual);
+    }
 
     @Test
     void normalParamRadio() {
@@ -13,31 +33,24 @@ public class RadioTest {
 
         station.setRadioStation(3);
         station.setVolumeStation(5);
-        station.setNextStation();
-        station.setNextVolume();
-        station.setPrevStation();
-        station.setPrevVolume();
+        station.nextStation();
+        station.nextVolume();
 
         int actualStation = station.getRadioStation();
         int actualVolume = station.getVolumeStation();
-        int actualNextStation = station.getNextStation();
-        int actualNextVolume = station.getNextVolume();
-        int actualPrevStation = station.getPrevStation();
-        int actualPrevVolume = station.getPrevVolume();
+        int actualNextStation = station.nextStation();
+        int actualNextVolume = station.nextVolume();
 
         int expectedStation = 3;
         int expectedVolume = 5;
         int expectedNextStation = 4;
         int expectedNextVolume = 6;
-        int expectedPrevStation = 2;
-        int expectedPrevVolume = 4;
 
         assertEquals(expectedStation, actualStation);
         assertEquals(expectedVolume, actualVolume);
         assertEquals(expectedNextStation, actualNextStation);
         assertEquals(expectedNextVolume, actualNextVolume);
-        assertEquals(expectedPrevStation, actualPrevStation);
-        assertEquals(expectedPrevVolume, actualPrevVolume);
+
     }
 
     @Test
@@ -46,31 +59,27 @@ public class RadioTest {
 
         station.setRadioStation(30);
         station.setVolumeStation(40);
-        station.setNextStation();
-        station.setNextVolume();
-        station.setPrevStation();
-        station.setPrevVolume();
+        station.nextStation();
+        station.nextVolume();
+
 
         int actualStation = station.getRadioStation();
         int actualVolume = station.getVolumeStation();
-        int actualNextStation = station.getNextStation();
-        int actualNextVolume = station.getNextVolume();
-        int actualPrevStation = station.getPrevStation();
-        int actualPrevVolume = station.getPrevVolume();
+        int actualNextStation = station.nextStation();
+        int actualNextVolume = station.nextVolume();
+
 
         int expectedStation = 0;
         int expectedVolume = 0;
         int expectedNextStation = 1;
         int expectedNextVolume = 1;
-        int expectedPrevStation = 9;
-        int expectedPrevVolume = 10;
+
 
         assertEquals(expectedStation, actualStation);
         assertEquals(expectedVolume, actualVolume);
         assertEquals(expectedNextStation, actualNextStation);
         assertEquals(expectedNextVolume, actualNextVolume);
-        assertEquals(expectedPrevStation, actualPrevStation);
-        assertEquals(expectedPrevVolume, actualPrevVolume);
+
     }
 
     @Test
@@ -79,31 +88,27 @@ public class RadioTest {
 
         station.setRadioStation(-9);
         station.setVolumeStation(-10);
-        station.setNextStation();
-        station.setNextVolume();
-        station.setPrevStation();
-        station.setPrevVolume();
+        station.nextStation();
+        station.nextVolume();
+
 
         int actualStation = station.getRadioStation();
         int actualVolume = station.getVolumeStation();
-        int actualNextStation = station.getNextStation();
-        int actualNextVolume = station.getNextVolume();
-        int actualPrevStation = station.getPrevStation();
-        int actualPrevVolume = station.getPrevVolume();
+        int actualNextStation = station.nextStation();
+        int actualNextVolume = station.nextVolume();
+
 
         int expectedStation = 0;
         int expectedVolume = 0;
         int expectedNextStation = 1;
         int expectedNextVolume = 1;
-        int expectedPrevStation = 9;
-        int expectedPrevVolume = 10;
+
 
         assertEquals(expectedStation, actualStation);
         assertEquals(expectedVolume, actualVolume);
         assertEquals(expectedNextStation, actualNextStation);
         assertEquals(expectedNextVolume, actualNextVolume);
-        assertEquals(expectedPrevStation, actualPrevStation);
-        assertEquals(expectedPrevVolume, actualPrevVolume);
+
     }
 
     @Test
@@ -112,31 +117,27 @@ public class RadioTest {
 
         station.setRadioStation(0);
         station.setVolumeStation(0);
-        station.setNextStation();
-        station.setNextVolume();
-        station.setPrevStation();
-        station.setPrevVolume();
+        station.nextStation();
+        station.nextVolume();
+
 
         int actualStation = station.getRadioStation();
         int actualVolume = station.getVolumeStation();
-        int actualNextStation = station.getNextStation();
-        int actualNextVolume = station.getNextVolume();
-        int actualPrevStation = station.getPrevStation();
-        int actualPrevVolume = station.getPrevVolume();
+        int actualNextStation = station.nextStation();
+        int actualNextVolume = station.nextVolume();
+
 
         int expectedStation = 0;
         int expectedVolume = 0;
         int expectedNextStation = 1;
         int expectedNextVolume = 1;
-        int expectedPrevStation = 9;
-        int expectedPrevVolume = 10;
+
 
         assertEquals(expectedStation, actualStation);
         assertEquals(expectedVolume, actualVolume);
         assertEquals(expectedNextStation, actualNextStation);
         assertEquals(expectedNextVolume, actualNextVolume);
-        assertEquals(expectedPrevStation, actualPrevStation);
-        assertEquals(expectedPrevVolume, actualPrevVolume);
+
     }
 
     @Test
@@ -145,31 +146,27 @@ public class RadioTest {
 
         station.setRadioStation(9);
         station.setVolumeStation(10);
-        station.setNextStation();
-        station.setNextVolume();
-        station.setPrevStation();
-        station.setPrevVolume();
+        station.nextStation();
+        station.nextVolume();
+
 
         int actualStation = station.getRadioStation();
         int actualVolume = station.getVolumeStation();
-        int actualNextStation = station.getNextStation();
-        int actualNextVolume = station.getNextVolume();
-        int actualPrevStation = station.getPrevStation();
-        int actualPrevVolume = station.getPrevVolume();
+        int actualNextStation = station.nextStation();
+        int actualNextVolume = station.nextVolume();
+
 
         int expectedStation = 9;
         int expectedVolume = 10;
         int expectedNextStation = 0;
-        int expectedNextVolume = 0;
-        int expectedPrevStation = 8;
-        int expectedPrevVolume = 9;
+        int expectedNextVolume = 10;
+
 
         assertEquals(expectedStation, actualStation);
         assertEquals(expectedVolume, actualVolume);
         assertEquals(expectedNextStation, actualNextStation);
         assertEquals(expectedNextVolume, actualNextVolume);
-        assertEquals(expectedPrevStation, actualPrevStation);
-        assertEquals(expectedPrevVolume, actualPrevVolume);
+
     }
 
     @Test
@@ -178,31 +175,27 @@ public class RadioTest {
 
         station.setRadioStation(8);
         station.setVolumeStation(9);
-        station.setNextStation();
-        station.setNextVolume();
-        station.setPrevStation();
-        station.setPrevVolume();
+        station.nextStation();
+        station.nextVolume();
+
 
         int actualStation = station.getRadioStation();
         int actualVolume = station.getVolumeStation();
-        int actualNextStation = station.getNextStation();
-        int actualNextVolume = station.getNextVolume();
-        int actualPrevStation = station.getPrevStation();
-        int actualPrevVolume = station.getPrevVolume();
+        int actualNextStation = station.nextStation();
+        int actualNextVolume = station.nextVolume();
+
 
         int expectedStation = 8;
         int expectedVolume = 9;
-        int expectedNextStation = 0;
-        int expectedNextVolume = 0;
-        int expectedPrevStation = 7;
-        int expectedPrevVolume = 8;
+        int expectedNextStation = 9;
+        int expectedNextVolume = 10;
+
 
         assertEquals(expectedStation, actualStation);
         assertEquals(expectedVolume, actualVolume);
         assertEquals(expectedNextStation, actualNextStation);
         assertEquals(expectedNextVolume, actualNextVolume);
-        assertEquals(expectedPrevStation, actualPrevStation);
-        assertEquals(expectedPrevVolume, actualPrevVolume);
+
     }
 
     @Test
@@ -211,30 +204,55 @@ public class RadioTest {
 
         station.setRadioStation(1);
         station.setVolumeStation(1);
-        station.setNextStation();
-        station.setNextVolume();
-        station.setPrevStation();
-        station.setPrevVolume();
+        station.nextStation();
+        station.nextVolume();
+
 
         int actualStation = station.getRadioStation();
         int actualVolume = station.getVolumeStation();
-        int actualNextStation = station.getNextStation();
-        int actualNextVolume = station.getNextVolume();
-        int actualPrevStation = station.getPrevStation();
-        int actualPrevVolume = station.getPrevVolume();
+        int actualNextStation = station.nextStation();
+        int actualNextVolume = station.nextVolume();
+
 
         int expectedStation = 1;
         int expectedVolume = 1;
         int expectedNextStation = 2;
         int expectedNextVolume = 2;
-        int expectedPrevStation = 0;
-        int expectedPrevVolume = 0;
+
 
         assertEquals(expectedStation, actualStation);
         assertEquals(expectedVolume, actualVolume);
         assertEquals(expectedNextStation, actualNextStation);
         assertEquals(expectedNextVolume, actualNextVolume);
-        assertEquals(expectedPrevStation, actualPrevStation);
-        assertEquals(expectedPrevVolume, actualPrevVolume);
+
+    }
+
+    @Test
+    void granLowNegativeParamRadio() {
+        Radio station = new Radio();
+
+        station.setRadioStation(-1);
+        station.setVolumeStation(-1);
+        station.nextStation();
+        station.nextVolume();
+
+
+        int actualStation = station.getRadioStation();
+        int actualVolume = station.getVolumeStation();
+        int actualNextStation = station.nextStation();
+        int actualNextVolume = station.nextVolume();
+
+
+        int expectedStation = 0;
+        int expectedVolume = 0;
+        int expectedNextStation = 1;
+        int expectedNextVolume = 1;
+
+
+        assertEquals(expectedStation, actualStation);
+        assertEquals(expectedVolume, actualVolume);
+        assertEquals(expectedNextStation, actualNextStation);
+        assertEquals(expectedNextVolume, actualNextVolume);
+
     }
 }
